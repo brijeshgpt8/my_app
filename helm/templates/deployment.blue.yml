@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "helm.fullname" . }}-webapp
+spec:
+  replicas: {{ default 1 .Values.replicaCount }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      run: webapp
+      color: blue
+  template:
+    metadata:
+      labels:
+        run: webapp
+        color: blue
+    spec:
+      containers:
+        - name: webapp
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+          {{- with .Values.deploy.ports }}
+          ports:
+            {{- toYaml . | trim | nindent 12 }}
+          {{- end }}
+          env:
+            {{- include "helm.env" . | trim | nindent 12 }}

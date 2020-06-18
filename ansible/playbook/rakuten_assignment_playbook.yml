@@ -1,0 +1,14 @@
+- hosts: all
+
+  tasks:
+    - name: update apt cache
+      apt: update_cache=yes cache_valid_time=3600
+
+    - name: install haproxy
+      apt: name=haproxy state=present
+
+      ###### Please use the #######
+      #      vi hosts
+      #      add hosts in this file
+      ############################
+      ansible-playbook playbook.yml -i hosts -u username

@@ -1,0 +1,29 @@
+
+replicaCount: 1
+
+image:
+  repository: brijeshgpt8/my_app
+  tag: latest
+  pullPolicy: Always
+
+deploy:
+  ports:
+    - containerPort: 3000
+  env:
+    literals:
+      RAILS_SERVE_STATIC_FILES: "true"
+      RAILS_LOG_TO_STDOUT: "true"
+      GOOGLE_CLOUD_PROJECT: "kubia-274318"
+      GCS_BUCKET: "image-store-f95fb1d5"
+      CDN_HOST: "kubia-274318-assets.helm.com"
+    secrets:
+      "app-secrets":
+        - DATABASE_URL
+        - SECRET_KEY_BASE
+        - GOOGLE_CLOUD_KEYFILE_JSON
+
+service:
+  type: ClusterIP
+  port: 80
+
+production: blue

@@ -1,0 +1,45 @@
+# IDEs, editors and OS
+*Dockerfile
+.dockerignore
+.idea
+.buildpath
+.project
+*.swp
+*.swo
+.DS_Store
+.byebug_history
+dump.rdb
+db/*.sqlite3
+design/
+doc/
+
+# git
+.git
+
+# Bundler
+.bundle
+vendor/bundle
+
+# Logs
+log/*
+
+# Assets and temporary files
+public/javascripts/all.js
+public/stylesheets/all.css
+public/assets/*
+.sass-cache
+tmp/*
+
+# Testing and CI
+coverage/
+features/
+spec/
+.yardoc
+.circleci
+
+
+#Emacs
+*~
+
+# Local scripts and files
+local/*
