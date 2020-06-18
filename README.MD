@@ -234,7 +234,7 @@ I've turned our blue-green deployment into a (CI/) CD pipeline. Every time someb
 
 **3:** run the playbook on the target node
 
-**4:** Playbook location: rakuten_assignment_playbook.yml
+**4:** Playbook location: my_app_playbook.yml
 ````
 vi hosts 
 add hosts in this file
